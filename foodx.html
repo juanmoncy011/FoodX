@@ -1,0 +1,98 @@
+[10:44 am, 15/3/2025] +91 6282 526 920: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodX - Registration & Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: url('food.webp') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 40%;
+            margin: 100px auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: green;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .message {
+            margin-top: 20px;
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register for FoodX</h2>
+        <form onsubmit="handleForm(event)">
+            <input type="text" name="username" placeholder="Enter Username" required>
+            <input type="password" name="password" placeholder="Enter Password" required>
+            <label for="userType">Select User Type:</label>
+            <select name="userType" required>
+                <option value="individual">Individual</option>
+                <option value="group">Group</option>
+            </select>
+            <button type="submit">Register/Login</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        function handleForm(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Get form data
+    const username = document.querySelector('input[name="username"]').value;
+    const password = document.querySelector('input[name="password"]').value;
+    const userType = document.querySelector('select[name="userType"]').value;
+
+    // Validate input
+    if (!username.trim() || !password.trim()) {
+        showMessage("Please fill in all fields.", "error");
+        return;
+    }
+
+    // Store user details in localStorage (or use session storage)
+    localStorage.setItem("username", username);
+    localStorage.setItem("userType", userType);
+
+    // Simulate login success message
+    showMessage(`Welcome, ${username}! (User Type: ${userType})`, "success");
+
+    console.log("Redirecting to file_upload.html in 2 seconds..."); 
+
+    // Redirect to file upload page
+    setTimeout(() => {
+        window.location.href = "file_upload.html";
+    }, 2000);
+}
+
+function showMessage(message, type) {
+    const messageDiv = document.getElementById('message');
+    messageDiv.textContent = message;
+    messageDiv.className = type === "error" ? "message error" : "message";
+}
+    </script>
+</body>
+</html>

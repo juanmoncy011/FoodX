@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Choice</title>
+</head>
+<body>
+    <h2>Select Scan Method</h2>
+    <button onclick="startBarcodeScan()">Scan Barcode</button>
+    <button onclick="startReceiptScan()">Scan Receipt</button>
+
+    <script>
+        function startBarcodeScan() {
+            window.location.href = "/barcode_scanner";
+        }
+
+        function startReceiptScan() {
+            window.location.href = "/receipt_scanner";
+        }
+    </script>
+</body>
+</html>
